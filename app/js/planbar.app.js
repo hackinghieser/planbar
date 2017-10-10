@@ -17,16 +17,38 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('year', {
             url: "/year",
             templateUrl: "../views/year.html",
-            controller: "ScheduleController"
+            controller: "YearController"
         })
         .state('type', {
             url: "/type",
             templateUrl: "../views/type.html",
-            controller: "SchduleController"
+            controller: "TypeController",
+            params: {
+                url: null
+            },
         })
         .state('courses', {
             url: "/courses",
             templateUrl: "../views/courses.html",
-            controller: "ScheduleController"
+            controller: "CourseController",
+            params: {
+                url: null
+            },
+        })
+        .state('sessions', {
+            url: "/session",
+            templateUrl: "../views/sessions.html",
+            controller: "SessionController",
+            params: {
+                url: null
+            }
+        })
+        .state('transform', {
+            url: "/transform",
+            templateUrl: "../views/transform.html",
+            controller: "TransformController",
+            params: {
+                modules: null
+            }
         });
 });

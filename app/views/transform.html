@@ -1,0 +1,29 @@
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Home</li>
+        <li class="breadcrumb-item">Programs</li>
+        <li class="breadcrumb-item">Sessions</li>
+        <li class="breadcrumb-item active">Export</li>
+    </ol>
+
+    <div ng-repeat="item in items" class="card padding">
+        <div class="card-header">
+            {{item.label}}
+        </div>
+        <div class="card-block">
+
+            <ul class="list-group">
+                <a ng-click="onClickItem(item)" href="" ng-repeat="event in item.events" class="list-group-item">
+                    <i class="icon ion-calendar royal"></i>
+                    {{event.label}}
+                </a>
+            </ul>
+        </div>
+    </div>
+
+    <button class="btn btn-success btn-block">
+        <i class="icon ion-ios-download"></i>
+        Export as ICS</button>
+
+</div>

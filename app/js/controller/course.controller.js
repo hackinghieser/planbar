@@ -1,0 +1,37 @@
+angular.module("PlanBarApp").controller("CourseController", function ($scope, $http, $state, $stateParams) {
+    console.log("CourseConroller loaded");
+
+    var url = $stateParams.url;
+
+    $scope.items = [];
+
+    function activate() {
+        console.log("Activate");
+
+        $http({
+            method: 'GET',
+            url: url
+        }).then(function successCallback(response) {
+            console.log(response)
+            $scope.items = response.data.modules;
+            $scope.items.map(function (item) {
+                item.checked = false;
+                return item;
+            })
+            $("[name='my-checkbox']").bootstrapSwitch();
+        }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+        });
+    }
+
+
+    activate();
+
+    $scope.submit = function () {
+        console.log($scope.items);
+        $state.go('transform', {
+            modules: $scope.items
+        });
+    }
+});

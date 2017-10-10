@@ -9,6 +9,7 @@
   "author": "Alexander Hieser",
   "license": "ISC",
   "dependencies": {
-    "angular-ui-router": "^0.4.3"
+    "angular-ui-router": "^0.4.3",
+    "ionic": "^3.12.0"
   }
 }

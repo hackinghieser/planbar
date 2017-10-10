@@ -1,1 +1,12 @@
-<h2>Year</h2>
+<div class="container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active">Home</li>
+    </ol>
+
+    <ul class="list-group">
+      <a ng-click="onClickItem(item)" href="" ng-repeat="item in items" class="list-group-item">
+            <i class="icon ion-calendar royal"></i>
+          {{item.label}}
+      </a>
+    </ul>
+</div>
