@@ -6,23 +6,27 @@ angular.module("PlanBarApp").controller("CourseController", function ($scope, $h
     $scope.items = [];
 
     function activate() {
-        console.log("Activate");
+        try {
+            console.log("Activate");
 
-        $http({
-            method: 'GET',
-            url: url
-        }).then(function successCallback(response) {
-            console.log(response)
-            $scope.items = response.data.modules;
-            $scope.items.map(function (item) {
-                item.checked = false;
-                return item;
-            })
-            $("[name='my-checkbox']").bootstrapSwitch();
-        }, function errorCallback(response) {
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
-        });
+            $http({
+                method: 'GET',
+                url: url
+            }).then(function successCallback(response) {
+                console.log(response)
+                $scope.items = response.data.modules;
+                $scope.items.map(function (item) {
+                    item.checked = false;
+                    return item;
+                })
+                $("[name='my-checkbox']").bootstrapSwitch();
+            }, function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+            });
+        } catch (err) {
+            $state.go('year');
+        }
     }
 
 

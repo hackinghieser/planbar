@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "angular-ui-router": "^0.4.3",
+    "ics-js": "^0.10.2",
     "ionic": "^3.12.0"
   }
 }

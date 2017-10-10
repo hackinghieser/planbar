@@ -6,6 +6,7 @@ angular.module("PlanBarApp").controller("SessionController", function($scope,$ht
     $scope.items = [];
 
     function activate() {
+        try {
         console.log("Activate");
 
         $http({
@@ -18,6 +19,9 @@ angular.module("PlanBarApp").controller("SessionController", function($scope,$ht
               // called asynchronously if an error occurs
               // or server returns response with an error status.
             });
+        }catch (err) {
+            $state.go('year');
+        }
     }
 
     $scope.onClickItem = function(item) {

@@ -6,6 +6,7 @@ angular.module("PlanBarApp").controller("TypeController", function($scope,$http,
     $scope.items = [];
 
     function activate() {
+        try  {
         console.log("Activate TypeController : URL " + url);
 
         $http({
@@ -18,6 +19,9 @@ angular.module("PlanBarApp").controller("TypeController", function($scope,$http,
               // called asynchronously if an error occurs
               // or server returns response with an error status.
             });
+        }catch(err){
+            $state.go('year');
+        }
     }
 
     $scope.onClickItem = function(item) {
