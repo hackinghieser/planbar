@@ -13,6 +13,7 @@ angular.module("PlanBarApp").controller("TransformController", function ($scope,
 
             modules.forEach(function (module) {
                 if (module.checked) {
+                    var index = 0;
                     var prom =
                         $http({
                             method: 'GET',
@@ -21,29 +22,29 @@ angular.module("PlanBarApp").controller("TransformController", function ($scope,
                             console.log(response)
                             var c = response.data;
                             c.dates = [];
-                            c.events.forEach(function(ev) {
+                            c.events.forEach(function (ev) {
                                 $http({
                                     method: 'GET',
                                     url: ev.url
                                 }).then(function successCallback(res) {
                                     console.log(res)
-                                    c.dates.push(res.data);
-                                    
+                                    c.events[index].date = res.data;
+                                    index++;
                                 }, function errorCallback(response) {
                                     // called asynchronously if an error occurs
                                     // or server returns response with an error status.
                                 });
                             })
                             $scope.items.push(c);
-                            
-                        
+
+
                         }, function errorCallback(response) {
                             // called asynchronously if an error occurs
                             // or server returns response with an error status.
                         });
                 }
             }, this);
-            console.log($scope.items);
+            console.log("Transfromation ", $scope.items);
 
         } catch (err) {
             $state.go('year');
@@ -58,13 +59,14 @@ angular.module("PlanBarApp").controller("TransformController", function ($scope,
         console.log($scope.items);
 
         var cal = ics();
-        $scope.items.forEach(function(item){
-            item.events.forEach(function(event){
-                cal.addEvent(item.label,event.label , location, begin, end);
+        $scope.items.forEach(function (item) {
+            item.events.forEach(function (event) {
+                console.log(moment.unix(event.date.startdate/1000).format());
+                cal.addEvent(item.label, event.label, "",moment.unix(event.date.startdate/1000).format(), (moment.unix(event.date.enddate/1000).format()));
             });
         });
-        cal.addEvent("", description, location, begin, end);
-        cal.addEvent(subject, description, location, begin, end); // yes, you can have multiple events :-)
-        cal.download(filename);
+
+        console.log("ICS", cal);
+        cal.download('Schedule');
     }
 });
