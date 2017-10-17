@@ -33,9 +33,24 @@ angular.module("PlanBarApp").controller("CourseController", function ($scope, $h
     activate();
 
     $scope.submit = function () {
+      if(checkIfSelected()) {
         console.log($scope.items);
         $state.go('transform', {
             modules: $scope.items
         });
+      }else {
+        $('#myModal').modal('show')
+      }
+    }
+
+    function checkIfSelected() {
+      var selected = false;
+      $scope.items.forEach(function(ele) {
+        if(ele.checked) {
+          selected = true;
+          return;
+        } 
+      })
+      return selected;
     }
 });

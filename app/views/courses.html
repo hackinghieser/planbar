@@ -1,26 +1,54 @@
 <div class="container">
 
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a >Home</a></li>
-      <li class="breadcrumb-item"><a >Programs</a></li>
-      <li class="breadcrumb-item"><a ">Sessions</a></li>
-      <li class="breadcrumb-item active">Customize</li>
-      
-    </ol>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a>Home</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a>Programs</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a>Sessions</a>
+    </li>
+    <li class="breadcrumb-item active">Customize</li>
 
-    <div ng-repeat="item in items">
-        <div class="input-group padding">
-        <label type="label" name="input_name" class="form-control" >{{item.label}}</label>
-        <span class="input-group-addon">
-            <label>
-                <center>
-                    <input ng-model="item.checked" type="checkbox" name="my-checkbox" checked>
-                </center>
-            </label>
-        </span>
+  </ol>
+  <div class="alert alert-success">
+    <div style="display:block">Wähle deine Kurse aus</div>
+  </div>
+  <div ng-repeat="item in items">
+    <div class="input-group padding">
+      <label type="label" name="input_name" class="form-control">{{item.label}}</label>
+      <span class="input-group-addon">
+        <label>
+          <center>
+            <input ng-model="item.checked" type="checkbox" name="my-checkbox" checked>
+          </center>
+        </label>
+      </span>
     </div>
-    
+
+  </div>
+
+  <button ng-click="submit()" class="btn btn-lg btn-primary btn-block">Submit</button>
 </div>
 
-    <button ng-click="submit()" class="btn btn-lg btn-primary btn-block">Submit</button>
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Fehler</h4>
+      </div>
+      <div class="modal-body">
+        <p>Keine Kurse ausgewählt!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+      </div>
+    </div>
+    
+  </div>
 </div>
