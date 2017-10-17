@@ -1,11 +1,25 @@
 <div class="container">
+  <div class="card">
+    <div class="card-header">
+      Statistik
+    </div>
+    <div class="card-body">
+      <p class="card-text">Vorlesungen: {{course_count}}</p>
+      <p class="card-text">Termine:     {{appointment_count}}</p>
+    </div>
+  </div>
+  <br>
+  <button ng-click="submit()" class="btn btn-success btn-block">
+    <i class="icon ion-ios-download"></i>
+    Export as ICS</button>
+  <br>
 
   <div ng-repeat="item in items" class="card padding">
     <div class="card-header">
       {{item.label}}
     </div>
-    <div class="card-block">
 
+    <div class="card-block">
       <ul class="list-group">
         <a ng-click="onClickItem(item)" href="" ng-repeat="event in item.events" class="list-group-item">
           <i class="icon ion-calendar royal"></i>
@@ -14,9 +28,4 @@
       </ul>
     </div>
   </div>
-
-  <button ng-click="submit()" class="btn btn-success btn-block">
-    <i class="icon ion-ios-download"></i>
-    Export as ICS</button>
-
 </div>

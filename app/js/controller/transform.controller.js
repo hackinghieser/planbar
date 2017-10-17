@@ -5,6 +5,8 @@ angular.module("PlanBarApp").controller("TransformController", function ($scope,
 
   $scope.items = [];
 
+  $scope.course_count = 0;
+  $scope.appointment_count = 0;
 
   function activate() {
     try {
@@ -12,6 +14,7 @@ angular.module("PlanBarApp").controller("TransformController", function ($scope,
       console.log("Activate TransformController");
 
       modules.forEach(function (module) {
+        $scope.course_count++;
         if (module.checked) {
           var index = 0;
           var prom =
@@ -21,7 +24,7 @@ angular.module("PlanBarApp").controller("TransformController", function ($scope,
             }).then(function successCallback(response) {
               console.log(response)
               var c = response.data;
-              c.dates = [];
+              $scope.appointment_count += c.events.length;
               c.events.forEach(function (ev) {
                 $http({
                   method: 'GET',
