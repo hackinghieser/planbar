@@ -17,7 +17,12 @@ app.use(bodyParser.json({
 })); // parse application/vnd.api+json as json
 app.use(methodOverride());
 
-
+function test() {
+    if(test){
+        test
+    }
+        
+}
 app.get("/",function(req,res){
     res.sendfile('app/views/index.html');
 })
