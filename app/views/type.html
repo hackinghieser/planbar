@@ -1,14 +1,19 @@
 <div class="container">
 
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a >Home</a></li>
-        <li class="breadcrumb-item active">Programs</li>
-    </ol>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a>Home</a>
+    </li>
+    <li class="breadcrumb-item active">Programs</li>
+  </ol>
+  <div class="alert alert-success">
+    <div style="display:block">Wähle deinen Studiengang</div>
+  </div>
 
-    <ul class="list-group">
-        <a ng-click="onClickItem(item)" href="" ng-repeat="item in items" class="list-group-item">
-            <i class="icon ion-university royal"></i>
-            {{item.label}}
-        </a>
-    </ul>
+  <ul class="list-group">
+    <a ng-click="onClickItem(item)" href="" ng-repeat="item in items" class="list-group-item">
+      <i class="icon ion-university royal"></i>
+      {{item.label}}
+    </a>
+  </ul>
 </div>
