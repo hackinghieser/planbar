@@ -14,8 +14,8 @@ angular.module("PlanBarApp").controller("TransformController", function ($scope,
       console.log("Activate TransformController");
 
       modules.forEach(function (module) {
-        $scope.course_count++;
         if (module.checked) {
+          $scope.course_count++;
           var index = 0;
           var prom =
             $http({
